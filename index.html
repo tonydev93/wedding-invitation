@@ -197,6 +197,8 @@ Chủ Nhật <br></h1></div></div><div id="w-51uwcprd" class="p-absolute animati
   #w-m3yp2qdv .image-background { background-image: url("./assets/images/album_9.jpg") !important; }
   #w-mpgcm7nj .image-background { background-image: url("./assets/images/album_10.jpg") !important; }
   @media screen and (max-width: 767px) {
+    body { overflow-x: hidden; }
+    .pageview { margin: 0 auto; }
     #w-6ahmj60e input, #w-6ahmj60e select, #w-6ahmj60e textarea { font-size: 16px !important; }
   }
 </style>
@@ -809,6 +811,20 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
 
 <script>
   (() => {
+    const pageview = document.querySelector('.pageview');
+    const fitMobileCanvas = () => {
+      if (!pageview) return;
+      if (window.innerWidth < 420) {
+        pageview.style.width = '420px';
+        pageview.style.zoom = String(window.innerWidth / 420);
+      } else {
+        pageview.style.width = '';
+        pageview.style.zoom = '';
+      }
+    };
+    fitMobileCanvas();
+    window.addEventListener('resize', fitMobileCanvas);
+
     const directionsUrl = 'https://maps.app.goo.gl/QoEP75V2eGhZufDD6';
     const embedUrl = 'https://www.google.com/maps?q=21.1640082,105.7811378&z=14&output=embed';
     const directionsButton = document.getElementById('w-juu475eg');
@@ -819,6 +835,11 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
       directionsButton.title = `Open link ${directionsUrl}`;
       directionsButton.target = '_blank';
       directionsButton.rel = 'noopener noreferrer';
+      directionsButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.location.assign(directionsUrl);
+      }, true);
     }
 
     if (mapFrame) {

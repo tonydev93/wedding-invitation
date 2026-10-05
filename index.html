@@ -805,7 +805,7 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
 
     const isBride = new URLSearchParams(window.location.search).get('side') === 'bride';
     const directionsUrl = isBride
-      ? 'https://maps.app.goo.gl/bXrjKiMzUvPNdASPA'
+      ? 'https://maps.app.goo.gl/Tbs8iNYcBeuCsGyn9'
       : 'https://maps.app.goo.gl/QoEP75V2eGhZufDD6';
     const embedUrl = isBride
       ? 'https://www.google.com/maps?q=S%C3%A2n%20%C4%90%C3%ACnh%20V%C4%A9nh%20Ninh%2C%20X%C3%A3%20%C4%90%E1%BA%A1i%20Thanh%2C%20TP.%20H%C3%A0%20N%E1%BB%99i&output=embed'
@@ -818,6 +818,11 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
       directionsButton.title = `Open link ${directionsUrl}`;
       directionsButton.target = '_blank';
       directionsButton.rel = 'noopener noreferrer';
+      directionsButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.open(directionsUrl, '_blank', 'noopener,noreferrer');
+      }, true);
     }
 
     if (mapFrame) {

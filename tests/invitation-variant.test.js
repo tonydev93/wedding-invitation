@@ -27,12 +27,14 @@ test('bride variant contains the requested ceremony and reception data', () => {
 
 test('bride variant uses its calendar date, map, directions link, and QR', () => {
   assert.match(html, /18\.10\.2026/);
-  assert.match(html, /https:\/\/maps\.app\.goo\.gl\/bXrjKiMzUvPNdASPA/);
+  assert.match(html, /https:\/\/maps\.app\.goo\.gl\/Tbs8iNYcBeuCsGyn9/);
   assert.ok(html.includes('./assets/QR_co_dau.png'));
 });
 
-test('directions link opens in a new tab without overriding the browser link behavior', () => {
+test('directions link overrides Webcake navigation and opens the selected map in a new tab', () => {
   assert.match(html, /directionsButton\.target\s*=\s*'_blank'/);
+  assert.match(html, /event\.stopImmediatePropagation\(\)/);
+  assert.match(html, /window\.open\(directionsUrl, '_blank', 'noopener,noreferrer'\)/);
   assert.doesNotMatch(html, /window\.location\.assign\(directionsUrl\)/);
 });
 

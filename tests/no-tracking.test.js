@@ -37,3 +37,11 @@ test('invitation page retains its local visual assets and RSVP submission script
     assert.match(html, new RegExp(requiredAsset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   });
 });
+
+test('invitation page serves Pancake media from local files only', () => {
+  const html = fs.readFileSync(indexPath, 'utf8');
+
+  assert.doesNotMatch(html, /https:\/\/(?:content|statics)\.pancake\.vn\//);
+  assert.match(html, /assets\/pancake\//);
+  assert.doesNotMatch(html, /Content-Security-Policy[^>]*(?:content|statics)\.pancake\.vn/);
+});

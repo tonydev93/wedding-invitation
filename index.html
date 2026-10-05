@@ -296,10 +296,28 @@ function onReady(cb) {
   }
 }
 
+const invitationSide = new URLSearchParams(window.location.search).get("side") === "bride"
+  ? "bride"
+  : "groom";
+
+const brideTextOverrides = {
+  "w-2qtdpz5v": "12:30\nChủ Nhật ",
+  "w-ddu61ha7": "12 giờ 30 ",
+  "w-qjyljn60": "Tại Sân Đình Vĩnh Ninh, Xã Đại Thanh, TP. Hà Nội ",
+  "w-n8gzvpxw": "LỄ VU QUY ",
+  "w-mskqkofa": "TIỆC MỪNG LỄ VU QUY ",
+  "w-5sx9ie42": "09:00 - Chủ Nhật ",
+  "w-gfo2idta": "18.10.2026 ",
+  "w-jd112yel": "(Tức Ngày 09 Tháng 09 Năm Bính Ngọ) ",
+  "w-je8e8czr": "Tại Sân Đình Vĩnh Ninh ",
+  "w-q4lm07gq": "SÂN ĐÌNH VĨNH NINH ",
+  "w-y5320mge": "Sân Đình Vĩnh Ninh, Xã Đại Thanh, TP. Hà Nội ",
+};
+
 function applyMapping() {
   for (const { id, text } of MAPPING) {
     const el = document.getElementById(id);
-    if (el) setTextPreserve(el, text);
+    if (el) setTextPreserve(el, invitationSide === "bride" ? (brideTextOverrides[id] || text) : text);
   }
 }
 
@@ -364,7 +382,9 @@ Adora Luxury – Quận 7
 BÀ LÊ THỊ MỸ DUYÊN <br></p></div></div><div id="w-o244vplo" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">NHÀ GÁI <br></p></div></div><div id="w-7xq4ifzq" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Cô Dâu </p></div></div><div id="w-p5it58kn" class="com-text-block p-absolute animation"><div class="text-block"><h1 class="text-block-css full-width">Mai Hương </h1></div></div><div id="w-otjboi4o" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Quận 8, TP. Hồ Chí Minh </p></div></div><div id="w-1e424hst" class="com-text-block p-absolute animation" style="white-space: pre-line;"><div class="text-block"><p class="text-block-css full-width">ÔNG PHẠM GIA LONG
 BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class="com-image-block p-absolute animation"><div class="image-block-css p-relative full-width full-height full-mask-size mask-position"><div class="image-background p-absolute" role="img" aria-label=""></div><div class="image-gradient-border"></div></div></div><div id="w-gp44a5y6" class="com-image-block p-absolute animation"><div class="image-block-css p-relative full-width full-height full-mask-size mask-position"><div class="image-background p-absolute" role="img" aria-label=""></div><div class="image-gradient-border"></div></div></div><div id="w-m5e37nrf" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">“Hôn nhân là chuyện cả đời,<br>Yêu người vừa ý, cưới người mình thương...</p></div></div></div></div></div><div id="w-6pnllpry" class="com-section" data-section=""><div class="section-wrapper full-width full-height p-relative"><div class="section-background p-absolute full-width full-height"></div><div class="section-container full-height p-relative"><div id="w-0c362gdd" class="p-absolute animation"><div class="line-css full-width"><div class="line-container"></div></div></div><div id="w-d0u5h72p" class="com-image-block p-absolute animation"><div class="image-block-css p-relative full-width full-height full-mask-size mask-position"><div class="image-background p-absolute" role="img" aria-label=""></div><div class="image-gradient-border"></div></div></div><div id="w-4ubspdqr" class="com-image-block p-absolute animation"><div class="image-block-css p-relative full-width full-height full-mask-size mask-position"><div class="image-background p-absolute" role="img" aria-label=""></div><div class="image-gradient-border"></div></div></div><div id="w-0ks4opxz" class="com-image-block p-absolute animation"><div class="image-block-css p-relative full-width full-height full-mask-size mask-position"><div class="image-background p-absolute" role="img" aria-label=""></div><div class="image-gradient-border"></div></div></div><div id="w-8y440bu9" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Thư Mời</p></div></div><div id="w-6uhy5p4v" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">THAM DỰ LỄ CƯỚI MINH HOÀNG &amp; MAI HƯƠNG </p></div></div></div></div></div><div id="w-4nbbl1cr" class="com-section" data-section=""><div class="section-wrapper full-width full-height p-relative"><div class="section-background p-absolute full-width full-height"></div><div class="section-container full-height p-relative"><div id="w-3f79uhf5" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">14 <br></p></div></div><div id="w-ddu61ha7" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">14 giờ 00 <br></p></div></div><div id="w-7qmumsol" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width"><span style="font-weight: normal;">Năm 2025 </span><br></p></div></div><div id="w-opzpfprk" class="p-absolute animation"><div class="full-width full-height"><div class="line-css full-width"><div class="line-container"></div></div></div></div><div id="w-q2daucbq" class="p-absolute animation"><div class="full-width full-height"><div class="line-css full-width"><div class="line-container"></div></div></div></div><div id="w-jv9i3lvl" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">(Tức Ngày 25 Tháng 10 Năm Ất Tỵ) <br></p></div></div><div id="w-7zhr1v3u" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Chủ Nhật <br></p></div></div><div id="w-td3u6t5g" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Tháng 12 <br></p></div></div><div id="w-uvta2v28" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Vào Lúc<br></p></div></div><div id="w-qjyljn60" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Tại Tư Gia Nhà Trai </p></div></div><div id="w-n8gzvpxw" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">LỄ THÀNH HÔN <br></p></div></div></div></div></div><div id="w-obbbuddv" class="com-section" data-section=""><div class="section-wrapper full-width full-height p-relative"><div class="section-background p-absolute full-width full-height"></div><div class="section-container full-height p-relative"><div id="w-58gev5g5" class="com-rectangle p-absolute"><div class="rectangle-css full-mask-size mask-position full-height full-width"><div class="rectangle-gradient-border"></div></div></div><div id="w-mskqkofa" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">TIỆC MỪNG LỄ THÀNH HÔN </p></div></div><div id="w-gfo2idta" class="com-text-block p-absolute animation"><div class="text-block"><h2 class="text-block-css full-width">14.12.2025 </h2></div></div><div id="w-5sx9ie42" class="com-text-block p-absolute animation"><div class="text-block"><h2 class="text-block-css full-width">18:00 - Chủ Nhật <br></h2></div></div><div id="w-jd112yel" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">(Tức Ngày 25 Tháng 10 Năm Ất Tỵ) <br></p></div></div><div id="w-je8e8czr" class="com-text-block p-absolute animation"><div class="text-block"><p class="text-block-css full-width">Tại Adora Center – Phú Nhuận </p></div></div></div></div></div><div id="w-wx267iw8" class="com-section" data-section=""><div class="section-wrapper full-width full-height p-relative"><div class="section-background p-absolute full-width full-height"></div><div class="section-container full-height p-relative"><div id="w-h9nnsos6" class="com-html-box p-absolute"><div class="frame-html-box full-width full-height"><!-- ⭐ CẤU HÌNH -->
 <script>
-  const DATE_INPUT = "17.10.2026";
+  const DATE_INPUT = new URLSearchParams(window.location.search).get("side") === "bride"
+    ? "18.10.2026"
+    : "17.10.2026";
   const CAL_LANG   = "vi"; // "vi" hoặc "en"
 </script>
 
@@ -670,9 +690,16 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
 
 
 
-
-
-      <script type="text/javascript" src="./assets/0802eb41-3953-4da4-a760-8e27082addb2"></script>
+    <script>
+      // Webcake uses the native browser alert for successful form submission.
+      (() => {
+        const nativeAlert = window.alert.bind(window);
+        window.alert = (message) => nativeAlert(
+          message === 'Success' ? 'Cảm ơn bạn đã xác nhận' : message,
+        );
+      })();
+    </script>
+    <script type="text/javascript" src="./assets/0802eb41-3953-4da4-a760-8e27082addb2"></script>
 
 
 
@@ -735,8 +762,13 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
     fitMobileCanvas();
     window.addEventListener('resize', fitMobileCanvas);
 
-    const directionsUrl = 'https://maps.app.goo.gl/QoEP75V2eGhZufDD6';
-    const embedUrl = 'https://www.google.com/maps?q=21.1640082,105.7811378&z=14&output=embed';
+    const isBride = new URLSearchParams(window.location.search).get('side') === 'bride';
+    const directionsUrl = isBride
+      ? 'https://maps.app.goo.gl/bXrjKiMzUvPNdASPA'
+      : 'https://maps.app.goo.gl/QoEP75V2eGhZufDD6';
+    const embedUrl = isBride
+      ? 'https://www.google.com/maps?q=S%C3%A2n%20%C4%90%C3%ACnh%20V%C4%A9nh%20Ninh%2C%20X%C3%A3%20%C4%90%E1%BA%A1i%20Thanh%2C%20TP.%20H%C3%A0%20N%E1%BB%99i&output=embed'
+      : 'https://www.google.com/maps?q=21.1640082,105.7811378&z=14&output=embed';
     const directionsButton = document.getElementById('w-juu475eg');
     const mapFrame = document.querySelector('#w-c6k67uah iframe');
 
@@ -745,16 +777,11 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
       directionsButton.title = `Open link ${directionsUrl}`;
       directionsButton.target = '_blank';
       directionsButton.rel = 'noopener noreferrer';
-      directionsButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        window.location.assign(directionsUrl);
-      }, true);
     }
 
     if (mapFrame) {
       mapFrame.src = embedUrl;
-      mapFrame.title = 'Bản đồ đến Nhà Văn Hóa thôn Đìa';
+      mapFrame.title = isBride ? 'Bản đồ đến Sân Đình Vĩnh Ninh' : 'Bản đồ đến Nhà Văn Hóa thôn Đìa';
     }
 
     ['w-o0mz96ae', 'w-pmc8mqlp', 'w-m8ypq383', 'w-pwbv0386'].forEach((id) => {
@@ -765,11 +792,14 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
     const qrImage = document.querySelector('#w-abgvbg6t .image-background');
 
     if (bankInfo) {
-      bankInfo.innerHTML = 'TPBank - Pham Van Binh<br>00374818001';
+      bankInfo.innerHTML = isBride
+        ? 'TPBank - Do Thi Kim Ly<br>02807857801'
+        : 'TPBank - Pham Van Binh<br>00374818001';
     }
 
     if (qrImage) {
-      qrImage.style.backgroundImage = 'url("./assets/QR.png")';
+      const qrAsset = isBride ? './assets/QR_co_dau.png' : './assets/QR.png';
+      qrImage.style.backgroundImage = `url("${qrAsset}")`;
       qrImage.style.backgroundSize = 'contain';
       qrImage.style.backgroundPosition = 'center';
       qrImage.style.width = '100%';
@@ -810,14 +840,14 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
           revealAlbumImage(entry.target);
           observer.unobserve(entry.target);
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.2, rootMargin: '0px 0px 120px 0px' });
       albumImages.forEach((image) => albumObserver.observe(image));
     } else {
       albumImages.forEach(revealAlbumImage);
     }
   })();
 </script>
-<script src="./assets/rsvp-to-sheets.js"></script>
+<script src="./assets/rsvp-to-sheets.js?v=20261005-2"></script>
 <script>try{let videoElem = document.getElementById('123')
 if (videoElem) {
     let playAttempt = setInterval(() => {

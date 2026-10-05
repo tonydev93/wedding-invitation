@@ -45,3 +45,28 @@ test('bank details switch to the bride account for the bride variant', () => {
 test('album animations start before the image reaches the viewport center', () => {
   assert.match(html, /rootMargin:\s*'0px 0px 120px 0px'/);
 });
+
+test('bride variant puts the bride name before the groom name', () => {
+  assert.match(html, /"w-4eszafr3":\s*"Kim Ly & Văn Bình/);
+  assert.match(html, /"w-6uhy5p4v":\s*"THAM DỰ LỄ CƯỚI KIM LY & VĂN BÌNH/);
+});
+
+test('reorders family information and places reception before ceremony', () => {
+  assert.match(html, /invitationSide\s*===\s*'bride'/);
+  assert.match(html, /familyOrder/);
+  assert.match(html, /receptionSection[\s\S]*insertBefore\(receptionSection, ceremonySection\)/);
+});
+
+test('bride invitation moves the bride family block above the groom family block', () => {
+  assert.match(html, /brideFamilyPositions/);
+  assert.match(html, /'w-o244vplo':\s*'137\.5px'/);
+  assert.match(html, /'w-vrj5ae9z':\s*'465\.25390625px'/);
+  assert.match(html, /'w-gp44a5y6':\s*'90\.00390625px'/);
+  assert.match(html, /'w-n420q3gb':\s*'410\.0000305175781px'/);
+});
+
+test('background music attempts autoplay and keeps interaction fallback', () => {
+  assert.match(html, /<audio id="background-music"[^>]*autoplay/);
+  assert.match(html, /<audio id="background-music"[^>]*preload="auto"/);
+  assert.match(html, /startOnce\(\);[\s\S]*document\.body\.addEventListener\("click", startOnce/);
+});

@@ -68,7 +68,7 @@
 Chủ Nhật <br></h1></div></div><div id="w-51uwcprd" class="p-absolute animation"><div class="full-width full-height"><div class="line-css full-width"><div class="line-container"></div></div></div></div><div id="w-a7d57pg8" class="com-text-block p-absolute animation"><div class="text-block"><h1 class="text-block-css full-width">14.12 <br></h1></div></div><div id="w-hmx417or" class="com-text-block p-absolute animation" style="white-space: pre-line;"><div class="text-block"><h1 class="text-block-css full-width">20
 25 <br></h1></div></div><div id="w-t2m2uzg4" class="com-text-block p-absolute animation"><div class="text-block"><h2 class="text-block-css full-width">(Tức Ngày 25 Tháng 10 Năm Ất Tỵ) </h2></div></div><div id="w-k5r7dd4b" class="com-html-box p-absolute"><div class="frame-html-box full-width full-height"><!-- ====== AUDIO & TOGGLE (HTML Box) ====== -->
 <!-- Nhạc nền -->
-<audio id="background-music" src="./assets/perfect.mp3" preload="none" loop=""></audio>
+<audio id="background-music" src="./assets/perfect.mp3" preload="auto" autoplay playsinline loop></audio>
 
 <!-- Nút toggle nhạc (cố định góc trái dưới) -->
 <div id="music-toggle" title="Bật / Tắt nhạc" aria-label="Bật / Tắt nhạc" class="">
@@ -192,6 +192,7 @@ Chủ Nhật <br></h1></div></div><div id="w-51uwcprd" class="p-absolute animati
       }
     };
 
+    startOnce();
     document.body.addEventListener("click", startOnce, { once: true });
     document.body.addEventListener("touchstart", startOnce, { once: true, passive: true });
 
@@ -301,6 +302,7 @@ const invitationSide = new URLSearchParams(window.location.search).get("side") =
   : "groom";
 
 const brideTextOverrides = {
+  "w-4eszafr3": "Kim Ly & Văn Bình ",
   "w-2qtdpz5v": "12:30\nChủ Nhật ",
   "w-ddu61ha7": "12 giờ 30 ",
   "w-qjyljn60": "Tại Sân Đình Vĩnh Ninh, Xã Đại Thanh, TP. Hà Nội ",
@@ -312,6 +314,7 @@ const brideTextOverrides = {
   "w-je8e8czr": "Tại Sân Đình Vĩnh Ninh ",
   "w-q4lm07gq": "SÂN ĐÌNH VĨNH NINH ",
   "w-y5320mge": "Sân Đình Vĩnh Ninh, Xã Đại Thanh, TP. Hà Nội ",
+  "w-6uhy5p4v": "THAM DỰ LỄ CƯỚI KIM LY & VĂN BÌNH ",
 };
 
 function applyMapping() {
@@ -761,6 +764,44 @@ BÀ NGUYỄN THỊ NGỌC HẠNH <br></p></div></div><div id="w-n420q3gb" class=
     };
     fitMobileCanvas();
     window.addEventListener('resize', fitMobileCanvas);
+
+    const familySection = document.getElementById('w-f9da4ivv');
+    const familyContainer = familySection?.querySelector('.section-container');
+    const familyAnchor = document.getElementById('w-n420q3gb');
+    const familyOrder = [
+      'w-o244vplo', 'w-7xq4ifzq', 'w-p5it58kn', 'w-otjboi4o', 'w-1e424hst',
+      'w-vrj5ae9z', 'w-ro447tq1', 'w-6ai6or66', 'w-uwl755j6', 'w-2g81k7ss',
+    ];
+    const brideFamilyPositions = {
+      'w-o244vplo': '137.5px',
+      'w-1e424hst': '155.5px',
+      'w-otjboi4o': '205.5px',
+      'w-7xq4ifzq': '272px',
+      'w-p5it58kn': '294.5px',
+      'w-gp44a5y6': '90.00390625px',
+      'w-vrj5ae9z': '465.25390625px',
+      'w-2g81k7ss': '483.2421875px',
+      'w-uwl755j6': '533.2421875px',
+      'w-ro447tq1': '599.74609375px',
+      'w-6ai6or66': '622.24609375px',
+      'w-n420q3gb': '410.0000305175781px',
+    };
+    if (invitationSide === 'bride' && familyContainer && familyAnchor) {
+      familyOrder.forEach((id) => {
+        const item = document.getElementById(id);
+        if (item) familyContainer.insertBefore(item, familyAnchor);
+      });
+      Object.entries(brideFamilyPositions).forEach(([id, top]) => {
+        const item = document.getElementById(id);
+        if (item) item.style.top = top;
+      });
+    }
+
+    const ceremonySection = document.getElementById('w-4nbbl1cr');
+    const receptionSection = document.getElementById('w-obbbuddv');
+    if (ceremonySection?.parentElement && receptionSection) {
+      ceremonySection.parentElement.insertBefore(receptionSection, ceremonySection);
+    }
 
     const isBride = new URLSearchParams(window.location.search).get('side') === 'bride';
     const directionsUrl = isBride

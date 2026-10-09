@@ -72,3 +72,13 @@ test('background music attempts autoplay and keeps interaction fallback', () => 
   assert.match(html, /<audio id="background-music"[^>]*preload="auto"/);
   assert.match(html, /startOnce\(\);[\s\S]*document\.body\.addEventListener\("click", startOnce/);
 });
+
+test('social previews use the public GitHub Pages URL for the invitation image', () => {
+  const siteUrl = 'https://tonydev93.github.io/wedding-invitation/';
+  const imageUrl = `${siteUrl}assets/images/thu_moi_2.jpeg`;
+
+  assert.match(html, new RegExp(`<link rel="canonical" href="${siteUrl}">`));
+  assert.match(html, new RegExp(`<meta property="og:url" content="${siteUrl}">`));
+  assert.match(html, new RegExp(`<meta property="og:image" content="${imageUrl}">`));
+  assert.match(html, new RegExp(`<meta property="og:image:secure_url" content="${imageUrl}">`));
+});

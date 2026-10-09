@@ -67,10 +67,13 @@ test('bride invitation moves the bride family block above the groom family block
   assert.match(html, /'w-n420q3gb':\s*'410\.0000305175781px'/);
 });
 
-test('background music attempts autoplay and keeps interaction fallback', () => {
+test('background music attempts autoplay and starts on the first touch or swipe gesture', () => {
   assert.match(html, /<audio id="background-music"[^>]*autoplay/);
   assert.match(html, /<audio id="background-music"[^>]*preload="auto"/);
   assert.match(html, /startOnce\(\);[\s\S]*document\.body\.addEventListener\("click", startOnce/);
+  assert.match(html, /document\.body\.addEventListener\("pointerdown", startOnce/);
+  assert.match(html, /document\.body\.addEventListener\("touchmove", startOnce/);
+  assert.match(html, /document\.body\.addEventListener\("wheel", startOnce/);
 });
 
 test('social previews use the public GitHub Pages URL for the invitation image', () => {

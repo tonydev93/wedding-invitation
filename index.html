@@ -198,7 +198,10 @@ Chủ Nhật <br></h1></div></div><div id="w-51uwcprd" class="p-absolute animati
 
     startOnce();
     document.body.addEventListener("click", startOnce, { once: true });
+    document.body.addEventListener("pointerdown", startOnce, { once: true, passive: true });
     document.body.addEventListener("touchstart", startOnce, { once: true, passive: true });
+    document.body.addEventListener("touchmove", startOnce, { once: true, passive: true });
+    document.body.addEventListener("wheel", startOnce, { once: true, passive: true });
 
     toggleButton.addEventListener("click", function (event) {
       event.stopPropagation();
